@@ -1,6 +1,6 @@
 # 🧠 AI Study Assistant
 
-A simple AI-powered web app to store notes and ask questions using a Retrieval-Augmented Generation (RAG) approach.
+An AI-powered web application that enables users to store notes and retrieve answers using a Retrieval-Augmented Generation (RAG) pipeline.
 
 ---
 
