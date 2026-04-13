@@ -1,6 +1,6 @@
 # 🧠 AI Study Assistant
 
-An AI-powered web application that enables users to store notes and retrieve answers using a Retrieval-Augmented Generation (RAG) pipeline.
+An AI-powered application that allows users to store notes, perform semantic search, and generate context-aware answers using a Retrieval-Augmented Generation (RAG) pipeline.
 
 ---
 
@@ -11,22 +11,47 @@ It retrieves relevant information using embeddings and generates responses using
 
 ---
 
-## ⚙️ Architecture
+## ⚙️ System Architecture
 
 ```
-User Input
-   ↓
-Streamlit UI
-   ↓
-RAG Pipeline
-   ↓
-OpenRouter Embeddings
-   ↓
-Vector Search (NumPy + Endee)
-   ↓
-OpenRouter LLM
-   ↓
-Response
+┌───────────────────────────────────────────────┐
+│                                               │
+│   1. USER INPUT                               │
+│      Notes / Question                         │
+│               │                               │
+│               ▼                               │
+│   2. STREAMLIT UI                             │
+│      Handles input and display                │
+│               │                               │
+│               ▼                               │
+│   3. RAG PIPELINE                             │
+│      Text processing and flow control         │
+│               │                               │
+│               ▼                               │
+│   4. EMBEDDING GENERATION                     │
+│      OpenRouter API                           │
+│      Text → Vector                            │
+│               │                               │
+│               ▼                               │
+│   5. VECTOR STORAGE                           │
+│      Local storage (pickle file)              │
+│      Managed via EndeeClient                  │
+│               │                               │
+│               ▼                               │
+│   6. SEMANTIC SEARCH                          │
+│      Cosine similarity (NumPy)                │
+│      Retrieve top matching notes              │
+│               │                               │
+│               ▼                               │
+│   7. LLM GENERATION                           │
+│      OpenRouter (LLaMA 3)                     │
+│      Context + Question → Answer              │
+│               │                               │
+│               ▼                               │
+│   8. RESPONSE                                 │
+│      Answer + Relevant Notes                  │
+│                                               │
+└───────────────────────────────────────────────┘
 ```
 
 ---
@@ -36,7 +61,7 @@ Response
 - Streamlit  
 - Python  
 - Endee (library integration)  
-- NumPy (vector operations)  
+- NumPy (similarity computation)  
 - OpenRouter API (Embeddings + LLM)  
 - Docker  
 
@@ -45,7 +70,7 @@ Response
 ## 🧠 Use of Endee
 
 Endee is used as a supporting library for vector operations.  
-Embeddings are stored locally and cosine similarity (NumPy) is used to retrieve relevant notes.
+Embeddings generated using OpenRouter enable semantic search, and similarity is used to retrieve relevant notes.
 
 ---
 
@@ -77,8 +102,8 @@ ai-study-assistant/
 ## 🚀 Setup
 
 ```bash
-git clone https://github.com/Kalaiselvi-25/endee.git
-cd ai-study-assistant
+git clone https://github.com/username/endee.git
+cd endee/ai-study-assistant
 ```
 
 Create `.env`:
