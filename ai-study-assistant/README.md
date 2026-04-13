@@ -14,47 +14,25 @@ It retrieves relevant information using embeddings and generates responses using
 ## ⚙️ System Architecture
 
 ```
-┌───────────────────────────────────────────────┐
-│                                               │
-│   1. USER INPUT                               │
-│      Notes / Question                         │
-│               │                               │
-│               ▼                               │
-│   2. STREAMLIT UI                             │
-│      Handles input and display                │
-│               │                               │
-│               ▼                               │
-│   3. RAG PIPELINE                             │
-│      Text processing and flow control         │
-│               │                               │
-│               ▼                               │
-│   4. EMBEDDING GENERATION                     │
-│      OpenRouter API                           │
-│      Text → Vector                            │
-│               │                               │
-│               ▼                               │
-│   5. VECTOR STORAGE                           │
-│      Local storage (pickle file)              │
-│      Managed via EndeeClient                  │
-│               │                               │
-│               ▼                               │
-│   6. SEMANTIC SEARCH                          │
-│      Cosine similarity (NumPy)                │
-│      Retrieve top matching notes              │
-│               │                               │
-│               ▼                               │
-│   7. LLM GENERATION                           │
-│      OpenRouter (LLaMA 3)                     │
-│      Context + Question → Answer              │
-│               │                               │
-│               ▼                               │
-│   8. RESPONSE                                 │
-│      Answer + Relevant Notes                  │
-│                                               │
-└───────────────────────────────────────────────┘
+1. User Input (Notes / Question)
+        ↓
+2. Streamlit UI
+        ↓
+3. RAG Pipeline
+        ↓
+4. Embedding Generation (OpenRouter)
+        ↓
+5. Vector Storage (Local + EndeeClient)
+        ↓
+6. Semantic Search (Cosine Similarity)
+        ↓
+7. LLM Response (OpenRouter)
+        ↓
+8. Output (Answer + Relevant Notes)
 ```
 
----
+
+
 
 ## 🛠️ Tech Stack
 
